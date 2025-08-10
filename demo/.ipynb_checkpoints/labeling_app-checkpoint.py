@@ -3,9 +3,11 @@ import streamlit as st
 import openpyxl
 import os
 import json
+import sys
+sys.path.append('../src')
+import mention_extraction.drug_ici_config
 
 
-# Expand page width
 st.set_page_config(layout="wide")
 
 # Load data
@@ -14,8 +16,16 @@ drug_path = '../data/drug_mentions.csv'
 symp_men = pd.read_csv(symptom_path)
 drug_men = pd.read_csv(drug_path)
 
-notes_path = '../data/mock_ehr.csv'
-notes = pd.read_csv(notes_path)
+config_file_json = "drug_symptom_dicts.json"
+def load_config(config_file_json):
+    with open(config_file_json, 'r') as f:
+        config = json.load(f)
+    return config
+config = load_config(config_file_json)
+notes = pd.read_csv(f'../data/{config['ehr_file_name']}')
+
+# notes_path = '../data/mock_ehr.csv'
+# notes = pd.read_csv(notes_path)
 symp_men = symp_men.merge(notes, on='report_id', how='left')
 drug_men = drug_men.merge(notes, on='report_id', how='left')
 # df['notes'] = df['notes'].apply(lambda x: x.replace('\n', '  '))
@@ -273,3 +283,4 @@ with col3:
                 save_label_to_csv(csv_path, label_row)
             
                 st.success("✅ Annotation saved to CSV (with deduplication)")
+

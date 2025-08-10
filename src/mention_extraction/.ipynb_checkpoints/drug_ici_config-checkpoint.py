@@ -1,5 +1,8 @@
 import json
 
+
+ehr_file_name = 'mock_ehr.csv'
+
 drug_dict = {
         'nivolumab':['NI','NIVOLUMAB','Nivo','Nivolumab','nivo','nivo,','nivolimab','nivolomab','nivolumab','nivoumab','novi','OPDIVO','Opdivo','Opidivo','opdivo','NI.','NIVOLUMAB.','Nivo.','Nivolumab.','nivo.','nivolimab.','nivolomab.','nivolumab.','nivoumab.','novi.','OPDIVO.','Opdivo.','Opidivo.','opdivo.','NivoluMAb', 'NivoluMab', 'Nivolulmab','Nivolumuab', 'Novilumab', 'nivi','nivolimumab', 'nivolumabvs' ],
         'ipilimumab': ['IPI','IPILIMUMAB','Ipi','Ipilimumab','ipi','ipilimuamb','ipilimumab','ipilimumad','ipiliumumab','ipillimumab','ipilmumuab','ipilubumab','ipilumab','ipilumimab','ipilumuad','ipilumumab','YERVOY', 'Yervoy','yervoy','ipilimuab','IPI.','IPILIMUMAB.','Ipi.','Ipilimumab.','ipi.','ipilimuamb.','ipilimumab.','ipilimumad.','ipiliumumab.','ipillimumab.','ipilmumuab.','ipilubumab.','ipilumab.','ipilumimab.','ipilumuad.','ipilumumab.','YERVOY.', 'Yervoy.','yervoy.','ipilimuab.','Ipilmumab', 'Ipilumumab'],
@@ -67,10 +70,12 @@ symptom_dict = {
     "Coagulopathy":['Coagulopathy', 'coagulopathy'],
 }
 
+
 # Define JSON data
 drug_symptom_dicts = {
-    'drug_dict':drug_dict,
-    'symptom_dict':symptom_dict
+    'ehr_file_name' : ehr_file_name,
+    'drug_dict' : drug_dict,
+    'symptom_dict' : symptom_dict
 }
 
 
